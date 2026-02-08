@@ -1,0 +1,218 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: pink;
+  font-family: "Comfortaa", cursive;
+  padding: 16px;
+}
+
+.card {
+  position: relative;
+  background-color: #f6e3e3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  border-radius: 20px;
+  color: #5a2a2a;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+}
+
+.card h1 {
+  font-size: 2.2rem;
+  font-family: "Pacifico", cursive;
+  color: #6b2c35;
+  text-align: center;
+}
+
+.card .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 30px;
+  width: 100%;
+}
+
+.card .container .btns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card .container .btns button {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.card .container .btns button.yesBtn {
+  background-color: rgb(247, 69, 99);
+  color: #f5f5f5;
+  transition:
+    transform 0.25s ease,
+    background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card .container .btns button.yesBtn:hover {
+  background-color: rgb(224, 63, 90);
+  transform: scale(1.15);
+}
+
+.card .container .btns button.noBtn {
+  background-color: #c2c2c2;
+  transition: transform 0.3s ease;
+}
+
+.card .container p {
+  font-size: 18px;
+  text-align: center;
+}
+
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.186);
+  -webkit-backdrop-filter: blur(2.5px);
+  backdrop-filter: blur(2.5px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.card .overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.card .message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  filter: blur(5px);
+  opacity: 0;
+  width: min(350px, 90%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 35px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffe6ea, #f9c5d1);
+  color: #5a2a2a;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    filter 0.4s ease;
+  pointer-events: none;
+}
+
+.card .message.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  filter: blur(0);
+  pointer-events: all;
+  animation: popIn 0.6s cubic-bezier(.17,.67,.3,1.3);
+}
+
+@keyframes popIn {
+  0%   { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
+  70%  { transform: translate(-50%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.card .message::after {
+  content: "💖";
+  font-size: 70px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.card .message p {
+  font-size: 18px;
+  text-align: center;
+}
+
+.card .message h2 {
+  font-family: cursive;
+  font-weight: 600;
+  font-size: 30px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 30px 20px;
+  }
+
+  .card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card h1 {
+    font-size: 1.5rem;
+  }
+
+  .card .container {
+    gap: 20px;
+  }
+
+  .card .container .btns button {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  .card .message {
+    padding: 25px 20px;
+  }
+
+  .card .message h2 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .card {
+    padding: 40px 30px;
+  }
+
+  .card h1 {
+    font-size: 2rem;
+  }
+
+  .card .container .btns button {
+    font-size: 18px;
+  }
+}
