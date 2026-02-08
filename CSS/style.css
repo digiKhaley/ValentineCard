@@ -165,8 +165,8 @@ body {
 }
 
 .card .message h2 {
-  font-family: cursive;
-  font-weight: 600;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
   font-size: 30px;
   text-align: center;
 }
@@ -216,3 +216,4 @@ body {
     font-size: 18px;
   }
 }
+
